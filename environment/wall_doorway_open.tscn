@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://2cuua8cao3si"]
+
+[ext_resource type="PackedScene" uid="uid://diapiuguha3g5" path="res://models/brackeys_3d_game_assets/dungeon_assets/building/wall_doorway.glb" id="1_l4b0p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lien7"]
+size = Vector3(1, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mldpx"]
+size = Vector3(0.90000004, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uag43"]
+size = Vector3(2.1000001, 1.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4b0p"]
+size = Vector3(0.1, 2.7, 2.1000001)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1349474614]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1813071235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4900002, 2.0000002, 0)
+shape = SubResource("BoxShape3D_lien7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1305190658]
+
+[node name="wall_doorway2" parent="StaticBody3D" unique_id=127657853 instance=ExtResource("1_l4b0p")]
+
+[node name="wall_doorway_door" parent="StaticBody3D/wall_doorway2/wall_doorway" parent_id_path=PackedInt32Array(127657853, 1470559950) index="0" unique_id=1902476495]
+transform = Transform3D(-0.5, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, -0.5, -0.8200989, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=193886376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 2.0000002, 0)
+shape = SubResource("BoxShape3D_mldpx")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=102574695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05999992, 3.45, 0)
+shape = SubResource("BoxShape3D_uag43")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1062363378]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -1.1584936, 1.35, 0.60131407)
+shape = SubResource("BoxShape3D_l4b0p")
+
+[editable path="StaticBody3D/wall_doorway2"]

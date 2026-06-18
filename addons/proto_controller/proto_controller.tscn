@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
+
+[ext_resource type="Script" uid="uid://bgfvb35pegui7" path="res://addons/proto_controller/proto_controller.gd" id="1_ucva2"]
+[ext_resource type="CapsuleMesh" uid="uid://bd608v2b24wf" path="res://models/playermesh.tres" id="2_wr06p"]
+[ext_resource type="PackedScene" uid="uid://d2a5d6tirtebd" path="res://Scenes/weapon.tscn" id="3_5hfox"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
+albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
+radius = 0.4
+height = 1.8
+
+[node name="ProtoController" type="CharacterBody3D" unique_id=635402]
+script = ExtResource("1_ucva2")
+can_sprint = true
+can_freefly = true
+input_left = "move_left"
+input_right = "move_right"
+input_forward = "move_up"
+input_back = "move_down"
+input_jump = "jump"
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1159770872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+material_override = SubResource("StandardMaterial3D_iof21")
+cast_shadow = 0
+mesh = ExtResource("2_wr06p")
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1419359530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_iof21")
+
+[node name="Head" type="Node3D" parent="." unique_id=1613322784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=119153514]
+
+[node name="WeaponPos" type="Node3D" parent="Head/Camera3D" unique_id=543054879]
+transform = Transform3D(0.11609303, 0, 0.99323833, 0, 1, 0, -0.99323833, 0, 0.11609303, 0.3, -0.20000005, -0.4)
+
+[node name="Weapon" parent="Head/Camera3D/WeaponPos" unique_id=1717006006 instance=ExtResource("3_5hfox")]
+transform = Transform3D(0.9848078, 0, 0.1736482, 0, 1, 0, -0.1736482, 0, 0.9848078, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1384013808]

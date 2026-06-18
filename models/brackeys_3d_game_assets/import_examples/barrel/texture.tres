@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://djnylq4a2aoeb"]
+
+[ext_resource type="Texture2D" uid="uid://ibtubea5gjja" path="res://models/brackeys_3d_game_assets/import_examples/barrel/barrel_texture.png" id="1_j0hwr"]
+
+[resource]
+resource_name = "texture"
+albedo_texture = ExtResource("1_j0hwr")

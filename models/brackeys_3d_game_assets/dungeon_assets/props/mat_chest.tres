@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b3gq6cx3vvfws"]
+
+[ext_resource type="Texture2D" uid="uid://c2ja01svpoxv6" path="res://models/brackeys_3d_game_assets/dungeon_assets/dungeon_albedo.png" id="1_axebk"]
+
+[resource]
+albedo_texture = ExtResource("1_axebk")
+emission_enabled = true
+normal_scale = 1.55

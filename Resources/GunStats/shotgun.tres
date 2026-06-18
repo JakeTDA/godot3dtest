@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GunStats" format=3 uid="uid://cf20x0cyev3ik"]
+
+[ext_resource type="Script" uid="uid://do6w8kxg5xsky" path="res://Classes/gun_stats.gd" id="1_ligrf"]
+
+[resource]
+script = ExtResource("1_ligrf")
+damage = 7
+spread = 5
+bullet_count = 10
+metadata/_custom_type_script = "uid://do6w8kxg5xsky"
