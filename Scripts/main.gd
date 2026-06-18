@@ -5,6 +5,7 @@ extends Node3D
 @onready var hud = $CanvasLayer/HUD
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 @onready var enemy = load("res://Scenes/enemy.tscn")
+@onready var shotgunenemy = load("res://Scenes/shotgun_enemy.tscn")
 @onready var player_list = []
 
 const Player = preload("res://Scenes/player.tscn")
@@ -14,6 +15,10 @@ var enemy_ai = true
 
 func _ready() -> void:
 	pass
+
+# add this temporarily anywhere
+#func _process(delta):
+#	print("enemy count: ", get_tree().get_nodes_in_group("enemies").size())
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
@@ -89,8 +94,11 @@ func spawn_bullet(spawn_position, spawn_velocity):
 func _on_multiplayer_spawner_spawned(node) -> void:
 	if node.is_multiplayer_authority():
 		node.health_changed.connect(update_health_bar)
-		
+
+
 func _on_enemy_died(enemy_position : Vector3):
+	if not multiplayer.is_server():
+		return
 	await get_tree().create_timer(1.0).timeout	
 	respawn_enemy.rpc(enemy_position)
 

@@ -125,25 +125,20 @@ func shoot():
 	if lee == true:
 		print("shoot")
 		weapon.shoot.rpc()
-		#ani.stop()
-		#ani.play("pistolshoot")
+		ani.stop()
+		ani.play("pistolshoot")
 		muzzleflash.restart()
 		muzzleflash.emitting = true
-		lee = false
+		lee = false	
 	
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.0).timeout
 		lee = true
 	
 func _physics_process(delta: float) -> void:	
 	if not is_multiplayer_authority(): return
 	# If freeflying, handle freefly and nothing else
 	if Input.is_action_just_pressed(input_shoot) and weapon:
-		shoot()
-		muzzleflash.restart()
-		muzzleflash.emitting = true
-		ani.stop()
-		ani.play("pistolshoot")
-		
+		shoot()		
 		
 	#if Input.is_action_just_pressed(input_shoot) and weapon:
 		#print("shoot")

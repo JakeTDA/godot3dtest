@@ -21,8 +21,8 @@ func _ready() -> void:
 	mesh_instance_3d = $MeshInstance3D
 	collider = $Collider
 	add_to_group("enemies")
-	
-	enemy_dead.connect(get_tree().current_scene._on_enemy_died)
+	if multiplayer.is_server():
+		enemy_dead.connect(get_tree().current_scene._on_enemy_died)
 
 func _physics_process(delta: float) -> void:
 	if not multiplayer.is_server():
@@ -42,17 +42,16 @@ func _on_enemy_hit(damage_amount: int) -> void:
 		damaged(damage_amount)
 	else:
 		damaged.rpc(damage_amount)
+		
 @rpc("any_peer","call_remote","reliable")
 func damaged(damage_amount):
-	if not multiplayer.is_server():
-		return
 	health -= damage_amount
 	print(health)
 	if health <= 0 and dead == false:
 		dead = true
 		death.rpc()
-		
-@rpc("authority", "call_local", "reliable")
+
+@rpc("authority","call_local","reliable")		
 func death():
 	hurtbox.queue_free()
 	mesh_instance_3d.queue_free()
@@ -60,7 +59,8 @@ func death():
 	ani.play("play")
 	await get_tree().create_timer(1.0).timeout
 	dead = false
-	enemy_dead.emit(global_position)
+	if multiplayer.is_server():
+		enemy_dead.emit(global_position)
 	queue_free()
 
 @rpc("authority","call_remote","reliable")

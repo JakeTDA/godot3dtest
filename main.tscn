@@ -398,15 +398,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 1, 0.3)
 [node name="Enemy3" parent="NPCs" unique_id=981643045 instance=ExtResource("17_cegan")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2000003, 1, 0.3)
 
-[node name="NPCSpawner" type="MultiplayerSpawner" parent="." unique_id=1512271027]
-_spawnable_scenes = PackedStringArray("uid://cjueqpto80vlf")
-spawn_path = NodePath("../NPCs")
-
-[node name="Enemy" parent="." unique_id=1198491180 instance=ExtResource("17_yaehf")]
+[node name="Enemy4" parent="NPCs" unique_id=1198491180 instance=ExtResource("17_yaehf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1, 7.4)
 
-[node name="Enemy2" parent="." unique_id=1125424693 instance=ExtResource("17_yaehf")]
+[node name="Enemy5" parent="NPCs" unique_id=1125424693 instance=ExtResource("17_yaehf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6000001, 1, 7.7000003)
+
+[node name="NPCSpawner" type="MultiplayerSpawner" parent="." unique_id=1512271027]
+_spawnable_scenes = PackedStringArray("uid://cjueqpto80vlf", "uid://kfbjfvrrfrt5")
+spawn_path = NodePath("../NPCs")
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
