@@ -150,10 +150,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=119153514]
 
 [node name="WeaponPos" type="Node3D" parent="Head/Camera3D" unique_id=543054879]
-transform = Transform3D(-0.02067208, 0.0070163026, 0.9997618, 0.018512068, 0.99980646, -0.006633844, -0.999615, 0.018370513, -0.020797813, 0.3, -0.4000001, -0.70000005)
+transform = Transform3D(-0.026038162, 0.0074801114, 0.9996331, 0.019196976, 0.99979115, -0.006981261, -0.9994766, 0.019008147, -0.026176328, 0.3, -0.4000001, -0.70000005)
 
 [node name="Weapon" type="Node3D" parent="Head/Camera3D/WeaponPos" unique_id=1717006006]
-transform = Transform3D(0.99999833, 3.350584e-05, -0.0017450063, 0, 0.99981564, 0.01919744, 0.0017453281, -0.019197412, 0.999814, 0, 0, 0)
+transform = Transform3D(0.9999983, 3.350584e-05, -0.0017450062, 0, 0.99981564, 0.01919744, 0.001745328, -0.019197412, 0.9998139, 0, 0, 0)
 script = ExtResource("3_vgqql")
 gun_stats = ExtResource("4_fkybt")
 

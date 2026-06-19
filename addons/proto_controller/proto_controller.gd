@@ -138,7 +138,10 @@ func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority(): return
 	# If freeflying, handle freefly and nothing else
 	if Input.is_action_just_pressed(input_shoot) and weapon:
+		
 		shoot()		
+	if Input.is_action_pressed(input_shoot) and weapon:
+		shoot()
 		
 	#if Input.is_action_just_pressed(input_shoot) and weapon:
 		#print("shoot")

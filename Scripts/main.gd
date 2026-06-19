@@ -44,7 +44,7 @@ func _on_host_button_pressed() -> void:
 	
 	add_player(multiplayer.get_unique_id())
 	
-	upnp_setup()
+	#upnp_setup()
 	
 	
 
