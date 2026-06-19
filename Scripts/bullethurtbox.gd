@@ -4,7 +4,7 @@ signal enemy_hit(damage_amount : int)
 var bullet : Bullet
 @onready var raycast = $Ray
 @onready var mesh: MeshInstance3D = $"../MeshInstance3D"
-
+var hit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +16,9 @@ func _physics_process(delta: float) -> void:
 		#return
 	
 	if raycast.is_colliding():
+		if hit == true:
+			return
+		hit = true
 		#if not multiplayer.is_server():
 			#return
 		var target = raycast.get_collider()

@@ -131,7 +131,7 @@ func shoot():
 		muzzleflash.emitting = true
 		lee = false	
 	
-		await get_tree().create_timer(0.0).timeout
+		await get_tree().create_timer(weapon.gun_stats.fire_rate).timeout
 		lee = true
 	
 func _physics_process(delta: float) -> void:	

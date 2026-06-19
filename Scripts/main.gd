@@ -11,7 +11,7 @@ extends Node3D
 const Player = preload("res://Scenes/player.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
-var enemy_ai = true
+@export var enemy_ai = false
 
 func _ready() -> void:
 	pass

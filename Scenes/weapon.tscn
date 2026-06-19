@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://d2a5d6tirtebd"]
 
 [ext_resource type="Script" uid="uid://c7kejrshyown5" path="res://Scripts/weapon.gd" id="1_er6cq"]
+[ext_resource type="Script" uid="uid://do6w8kxg5xsky" path="res://Classes/gun_stats.gd" id="2_qv81b"]
+
+[sub_resource type="Resource" id="Resource_e1ly8"]
+script = ExtResource("2_qv81b")
+metadata/_custom_type_script = "uid://do6w8kxg5xsky"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er6cq"]
 vertex_color_use_as_albedo = true
@@ -45,6 +50,7 @@ height = 0.15
 
 [node name="Weapon" type="Node3D" unique_id=1717006006]
 script = ExtResource("1_er6cq")
+gun_stats = SubResource("Resource_e1ly8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1388932882]
 transform = Transform3D(0.3, 0, 0, 0, 0.099999964, 0, 0, 0, 0.07999999, 0, 0.10000001, 0)

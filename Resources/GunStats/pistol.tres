@@ -1,7 +1,10 @@
 [gd_resource type="Resource" script_class="GunStats" format=3 uid="uid://djduyq41xwrmg"]
 
 [ext_resource type="Script" uid="uid://do6w8kxg5xsky" path="res://Classes/gun_stats.gd" id="1_iajmu"]
+[ext_resource type="Curve" uid="uid://el0s3l1k5eac" path="res://Resources/SpeedCurves/constant_speed.tres" id="2_d1l0d"]
 
 [resource]
 script = ExtResource("1_iajmu")
+fire_rate = 0.1
+speed_curve = ExtResource("2_d1l0d")
 metadata/_custom_type_script = "uid://do6w8kxg5xsky"
