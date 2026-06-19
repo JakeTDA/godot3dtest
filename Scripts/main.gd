@@ -11,10 +11,7 @@ extends Node3D
 const Player = preload("res://Scenes/player.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
-@export var enemy_ai = false
-
-func _ready() -> void:
-	pass
+@export var enemy_ai = true
 
 # add this temporarily anywhere
 #func _process(delta):
@@ -34,7 +31,7 @@ func _unhandled_input(event):
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				enemy.shoot_ai = true
 				print("ai turned on")
-
+				
 func _on_host_button_pressed() -> void:
 	main_menu.hide() 
 	hud.show()
@@ -47,7 +44,7 @@ func _on_host_button_pressed() -> void:
 	
 	add_player(multiplayer.get_unique_id())
 	
-	#upnp_setup()
+	upnp_setup()
 	
 	
 

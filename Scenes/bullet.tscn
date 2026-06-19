@@ -29,7 +29,7 @@ script = ExtResource("1_oduel")
 speed = 50.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=480007024]
-transform = Transform3D(-4.371138e-09, 4.3711395e-09, -0.1, 0.1, -4.371139e-09, -4.3711386e-09, -4.3711395e-09, -0.1, -4.371139e-09, 0, 0, 0)
+transform = Transform3D(-4.3711377e-09, 4.3711395e-09, -0.1, 0.1, -4.371139e-09, -4.371138e-09, -4.3711395e-09, -0.1, -4.371139e-09, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_oduel")
 mesh = SubResource("CapsuleMesh_eyyro")
 

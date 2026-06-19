@@ -4,6 +4,7 @@ extends Resource
 @export var damage : float = 10.0
 @export var spread : float = 1.0
 @export var bullet_count : int = 1
+@export var bullet_size : float = 1
 @export var fire_rate : float = 0.0
 @export var bullet_speed : float = 40
 @export var speed_curve : Curve

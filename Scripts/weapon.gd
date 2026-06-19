@@ -2,7 +2,7 @@ class_name Weapon extends Node3D
 
 @export var gun_stats : GunStats
 @onready var bullet = load("res://Scenes/bullet.tscn")
-@onready var pos: Node3D = $pos
+@onready var pos : Node3D = $pos
 
 var main : Node
 func _ready() -> void:
@@ -21,6 +21,7 @@ func shoot():
 		instance.global_position = pos.global_position
 		instance.global_transform.basis = pos.global_transform.basis
 		instance.damage = gun_stats.damage
+		instance.size = gun_stats.bullet_size
 		instance.speed = gun_stats.bullet_speed
 		instance.accel_curve = gun_stats.speed_curve
 		instance.time_taken = gun_stats.time_taken

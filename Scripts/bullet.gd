@@ -5,12 +5,19 @@ extends CharacterBody3D
 @export var accel_curve : Curve
 @export var speed : float = 40.0
 @export var time_taken : float = 1.0
-@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+@export var size : float = 0.1
+@onready var mesh: MeshInstance3D = $MeshInstance3D
 @onready var bullet_hitbox: Hitbox = $BulletHitbox
 @onready var hitbox_collision = $BulletHitbox/CollisionShape3D
 @onready var raycast = $BulletHitbox/Ray
 var time = 0.0
 
+func _ready() -> void:
+	call_deferred("apply_size")
+
+func apply_size():
+	mesh.scale = Vector3(size,size,size)
+	bullet_hitbox.scale = Vector3(size,size,size)
 var acceleration : float = 0.0
 func _physics_process(delta):
 	time += delta
@@ -20,7 +27,7 @@ func _physics_process(delta):
 		raycast.call_deferred("set","enabled",false)
 	else:
 		raycast.call_deferred("set","enabled",true)
-	position += transform.basis * Vector3(0,0,-acceleration) * delta
+	position += global_transform.basis * Vector3(0,0,-acceleration) * delta
 	
 @rpc("any_peer","call_local","reliable")
 func destroy_bullet():
