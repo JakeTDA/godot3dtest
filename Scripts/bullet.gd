@@ -29,7 +29,5 @@ func _physics_process(delta):
 		raycast.call_deferred("set","enabled",true)
 	position += global_transform.basis * Vector3(0,0,-acceleration) * delta
 	
-@rpc("any_peer","call_local","reliable")
 func destroy_bullet():
-	if multiplayer.is_server():
-		queue_free()
+	queue_free()

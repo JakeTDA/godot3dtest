@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bgfvb35pegui7" path="res://addons/proto_controller/proto_controller.gd" id="1_6t5aa"]
 [ext_resource type="CapsuleMesh" uid="uid://bd608v2b24wf" path="res://models/playermesh.tres" id="2_vgqql"]
-[ext_resource type="Script" uid="uid://c7kejrshyown5" path="res://Scripts/weapon.gd" id="3_vgqql"]
-[ext_resource type="Resource" uid="uid://djduyq41xwrmg" path="res://Resources/GunStats/pistol.tres" id="4_fkybt"]
+[ext_resource type="Script" uid="uid://dfurseyy8x87v" path="res://Scripts/player_weapon.gd" id="3_vgqql"]
+[ext_resource type="Resource" uid="uid://ct6a8h6vxru5w" path="res://Resources/GunStats/smg.tres" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://bekuaxwbhp0vq" path="res://Scripts/enemyhitbox.gd" id="5_fkybt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
@@ -100,12 +100,24 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath(".:health")
+properties/2/path = NodePath("Head:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("Head:rotation")
+properties/3/path = NodePath("Head/Camera3D/WeaponPos/Weapon/pos:position")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath("Head/Camera3D/WeaponPos/Weapon/pos:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Head/Camera3D/WeaponPos/Weapon:rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Head/Camera3D/WeaponPos/Weapon:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:health")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vgqql"]
 radius = 0.4
@@ -114,13 +126,26 @@ height = 1.8000001
 [node name="ProtoController" type="CharacterBody3D" unique_id=635402]
 collision_layer = 2
 script = ExtResource("1_6t5aa")
+health = null
+can_move = null
+has_gravity = null
+can_jump = null
 can_sprint = true
 can_freefly = true
+look_speed = null
+base_speed = null
+jump_velocity = null
+sprint_speed = null
+freefly_speed = null
+friction = null
 input_left = "move_left"
 input_right = "move_right"
 input_forward = "move_up"
 input_back = "move_down"
 input_jump = "jump"
+input_sprint = null
+input_freefly = null
+input_shoot = null
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1159770872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

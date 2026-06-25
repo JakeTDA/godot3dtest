@@ -12,10 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://6d331u76ubm7" path="res://environment/wall_window_closed.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://wfsov2g18cxt" path="res://environment/ceiling.tscn" id="10_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b7y74ybyp5fnx" path="res://environment/torch_mounted.tscn" id="11_efxa6"]
+[ext_resource type="Script" uid="uid://beoow7fcv0jmd" path="res://Scripts/bullet_container.gd" id="16_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://ddboy36s3scj0" path="res://particles/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://dcxxokb45svag" path="res://Scripts/health_bar.gd" id="17_074og"]
 [ext_resource type="PackedScene" uid="uid://kfbjfvrrfrt5" path="res://Scenes/shotgun_enemy.tscn" id="17_cegan"]
 [ext_resource type="PackedScene" uid="uid://cjueqpto80vlf" path="res://Scenes/enemy.tscn" id="17_yaehf"]
+[ext_resource type="PackedScene" uid="uid://b0ipyxcr6w3e8" path="res://Scenes/player.tscn" id="18_074og"]
 
 [sub_resource type="Gradient" id="Gradient_ycdy4"]
 offsets = PackedFloat32Array(0, 0.27727273, 0.8090909, 1)
@@ -68,8 +70,7 @@ environment = SubResource("Environment_0xm2m")
 camera_attributes = SubResource("CameraAttributesPractical_ycdy4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1485551814]
-transform = Transform3D(1.0000002, 0, 0, 0, -0.86602545, 0.5, 0, -0.5, -0.86602545, 6.3440375, 11.056202, -7.238195)
-light_energy = 0.7
+transform = Transform3D(0.5747597, 0.5184456, 0.6331396, -0.8080128, 0.48197675, 0.33884215, -0.12948735, -0.7063376, 0.6959313, 6.3440375, 11.056202, -7.238195)
 shadow_enabled = true
 
 [node name="Greybox" type="CSGCombiner3D" parent="." unique_id=514630040]
@@ -129,7 +130,7 @@ transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("PlaneMesh_074og")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Arena" unique_id=727326438]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69999963, 1.01, -8.199999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69999963, 1.01, -13.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D3" unique_id=1872434278]
 shape = SubResource("BoxShape3D_yaehf")
@@ -156,50 +157,6 @@ shape = SubResource("BoxShape3D_yaehf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D6" unique_id=1797419013]
 transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("BoxMesh_074og")
-
-[node name="StaticBody3D7" type="StaticBody3D" parent="Arena" unique_id=1872616507]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 5, -0.69999963, 15.626, -29)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D7" unique_id=534518536]
-shape = SubResource("BoxShape3D_yaehf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D7" unique_id=818534344]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_074og")
-
-[node name="StaticBody3D8" type="StaticBody3D" parent="Arena" unique_id=308605043]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 5, -0.69999963, 15.626, 28)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D8" unique_id=831675465]
-shape = SubResource("BoxShape3D_yaehf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D8" unique_id=1435536723]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_074og")
-
-[node name="StaticBody3D9" type="StaticBody3D" parent="Arena" unique_id=885737331]
-transform = Transform3D(-6.556708e-07, 0, 5, 0, 15, 0, -15, 0, -2.1855695e-07, -31.699997, 15.626, -0.4999986)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D9" unique_id=758728457]
-shape = SubResource("BoxShape3D_yaehf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D9" unique_id=1256013321]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_074og")
-
-[node name="StaticBody3D10" type="StaticBody3D" parent="Arena" unique_id=610548164]
-transform = Transform3D(-6.556708e-07, 0, 5, 0, 15, 0, -15, 0, -2.1855695e-07, 27.800007, 15.626, -0.5000012)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D10" unique_id=2048465184]
-shape = SubResource("BoxShape3D_yaehf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D10" unique_id=745921741]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
-cast_shadow = 0
 mesh = SubResource("BoxMesh_074og")
 
 [node name="Walls" type="Node3D" parent="." unique_id=918247936]
@@ -404,9 +361,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 416.0
-offset_top = 270.0
+offset_top = 219.0
 offset_right = -416.0
-offset_bottom = -278.0
+offset_bottom = -219.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -429,7 +386,16 @@ vertical_alignment = 1
 
 [node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=873888128]
 layout_mode = 2
-text = "Play"
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=1968547873]
+layout_mode = 2
+text = "Join"
+
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=1621382252]
+layout_mode = 2
+placeholder_text = "Enter Address to Join Here"
+alignment = 1
 
 [node name="HUD" type="Control" parent="CanvasLayer" unique_id=1752827298]
 visible = false
@@ -469,6 +435,17 @@ value = 100.0
 show_percentage = false
 script = ExtResource("17_074og")
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=2075078979]
+_spawnable_scenes = PackedStringArray("uid://b0ipyxcr6w3e8")
+spawn_path = NodePath("..")
+
+[node name="BulletSpawner" type="MultiplayerSpawner" parent="." unique_id=1507640373]
+_spawnable_scenes = PackedStringArray("uid://ctxdnwqcyn5ar")
+spawn_path = NodePath("../BulletContainer")
+
+[node name="BulletContainer" type="Node3D" parent="." unique_id=2055254828]
+script = ExtResource("16_2cqfq")
+
 [node name="NPCs" type="Node3D" parent="." unique_id=1547485810]
 
 [node name="Enemy" parent="NPCs" unique_id=1092334543 instance=ExtResource("17_cegan")]
@@ -495,4 +472,13 @@ shoot_ai = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.7, 2.9)
 shoot_ai = false
 
-[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_play_button_pressed"]
+[node name="NPCSpawner" type="MultiplayerSpawner" parent="." unique_id=1512271027]
+_spawnable_scenes = PackedStringArray("uid://cjueqpto80vlf", "uid://kfbjfvrrfrt5")
+spawn_path = NodePath("../NPCs")
+
+[node name="ProtoController" parent="." unique_id=635402 instance=ExtResource("18_074og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

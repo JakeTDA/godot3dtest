@@ -56,9 +56,10 @@ signal health_changed(health_value)
 @export var input_shoot : String = "shoot"
 
 @onready var ani = $AnimationPlayer
-@onready var muzzleflash = $Head/Camera3D/WeaponPos/Weapon/Muzzle
+@onready var muzzleflash = $Head/Camera3D/Weapon/Muzzle
 @onready var shotgun = preload("res://Resources/GunStats/shotgun.tres")
 @onready var pistol = preload("res://Resources/GunStats/pistol.tres")
+@onready var smg = preload("res://Resources/GunStats/smg.tres")
 
 
 var bull : int = 0
@@ -71,7 +72,7 @@ var freeflying : bool = false
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
-@onready var weapon: Weapon = $Head/Camera3D/WeaponPos/Weapon
+@onready var weapon: Weapon = $Head/Camera3D/Weapon
 @onready var camera = $Head/Camera3D
 
 func _enter_tree():
@@ -86,22 +87,33 @@ func _ready() -> void:
 	look_rotation.x = head.rotation.x
 	
 	add_to_group("players")
-
+	weapon.stop_shoot.connect(cur_reload)
+	weapon.ammo_out.connect(out_of_ammo)
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		capture_mouse()
-	if Input.is_key_pressed(KEY_ESCAPE):
+	if Input.is_key_pressed(KEY_ESCAPE): 	
 		release_mouse()
 	
 	# Weapon Swap Test
-	if Input.is_key_pressed(KEY_V):
-		weapon.gun_stats = pistol
-	if Input.is_key_pressed(KEY_B):
-		print("maybe")
-		weapon.gun_stats = shotgun
-	
+	#if Input.is_key_pressed(KEY_V):
+		#weapon.gun_stats = pistol
+		#full_auto = weapon.get_mode()
+		#cooldown = weapon.get_cooldown()
+	#if Input.is_key_pressed(KEY_B):
+		#weapon.gun_stats = shotgun
+		#full_auto = weapon.get_mode()
+		#cooldown = weapon.get_cooldown()
+	#if Input.is_just_key_pressed(KEY_N):
+		#weapon.gun_stats = smg
+		#full_auto = weapon.get_mode()
+		#cooldown = weapon.get_cooldown()
+	if Input.is_action_just_pressed("reload"):
+		reload()
+	if Input.is_action_just_pressed("weapon_swap"):
+		weapon_swap()
 	# Look around
 	if mouse_captured and event is InputEventMouseMotion:
 		rotate_look(event.relative)
@@ -117,30 +129,55 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print("shoot")
 		#bull += 1
 		#print(bull)
-		
+@onready var cooldown = weapon.get_cooldown()
+var on_cooldown = false
+@onready var reload_time = weapon.get_reload()
+var reloading = false
+var ammo_out = false
+@onready var full_auto = weapon.get_mode()
 
-var lee = true
-@rpc("call_local")
+func cur_reload():
+	reloading = true
+
+func out_of_ammo():
+	ammo_out = true
+
+func reload():
+	print("reloading")
+	await get_tree().create_timer(reload_time).timeout
+	weapon.reload()
+	ammo_out = false
+	reloading = false
+	print("reloaded")
+	
+func weapon_swap():
+	weapon.weapon_swap()
+	reload_time = weapon.get_reload()
+	cooldown = weapon.get_cooldown()
+	full_auto = weapon.get_mode()
+	reloading = false
+	ammo_out = false
+	
+
 func shoot():
-	if lee == true:
-		print("shoot")
-		weapon.shoot.rpc()
+	#print(cooldown)
+	if on_cooldown == false and reloading == false and ammo_out == false:
+		#print("shoot")
+		weapon.shoot()
 		ani.stop()
 		ani.play("pistolshoot")
 		muzzleflash.restart()
 		muzzleflash.emitting = true
-		lee = false	
-	
-		await get_tree().create_timer(weapon.gun_stats.fire_rate).timeout
-		lee = true
+		on_cooldown = true
+		
+		await get_tree().create_timer(cooldown).timeout
+		on_cooldown = false
 	
 func _physics_process(delta: float) -> void:	
-	if not is_multiplayer_authority(): return
 	# If freeflying, handle freefly and nothing else
-	if Input.is_action_just_pressed(input_shoot) and weapon:
-		
+	if Input.is_action_just_pressed(input_shoot) and weapon and not full_auto:
 		shoot()		
-	if Input.is_action_pressed(input_shoot) and weapon:
+	if Input.is_action_pressed(input_shoot) and weapon and full_auto:
 		shoot()
 		
 	#if Input.is_action_just_pressed(input_shoot) and weapon:
@@ -252,9 +289,8 @@ func check_input_mappings():
 		can_freefly = false
 
 func _on_player_hurtbox_enemy_hit(damage_amount: int) -> void:
-	player_hit.rpc(damage_amount)
+	player_hit(damage_amount)
 	
-@rpc("any_peer","call_local", "reliable")
 func player_hit(damage_amount : int):
 	if not is_multiplayer_authority():
 		return

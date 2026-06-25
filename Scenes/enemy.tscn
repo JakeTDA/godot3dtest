@@ -16,17 +16,6 @@ height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afpow"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_afpow"]
-properties/0/path = NodePath(".:health")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:position")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
 [node name="Enemy" type="CharacterBody3D" unique_id=1092334543]
 script = ExtResource("1_1f0kj")
 shoot_ai = true
@@ -47,9 +36,6 @@ shape = SubResource("CapsuleShape3D_afpow")
 disabled = true
 
 [node name="Boom" parent="." unique_id=999300250 instance=ExtResource("3_afpow")]
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=37618470]
-replication_config = SubResource("SceneReplicationConfig_afpow")
 
 [node name="Weapon" parent="." unique_id=1717006006 instance=ExtResource("4_0830c")]
 transform = Transform3D(4.4703484e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 4.4703484e-08, 9.089708e-08, 0.4, -0.7)

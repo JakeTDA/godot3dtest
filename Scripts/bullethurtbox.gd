@@ -27,11 +27,9 @@ func _physics_process(delta: float) -> void:
 		raycast.enabled = false
 		raycast.set_process_internal(false)
 		await get_tree().create_timer(2.0).timeout
-		bullet.destroy_bullet.rpc()
+		bullet.destroy_bullet()
 			
 func damage(area: Node3D):
-	if not is_multiplayer_authority():
-		return
 	var damage_amount = bullet.damage
 	if area is Hurtbox:
 		#if area.is_multiplayer_authority(): return

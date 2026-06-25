@@ -5,12 +5,12 @@
 
 [resource]
 script = ExtResource("1_ligrf")
-damage = 7.0
-spread = 5.0
+spread = 7.0
 bullet_count = 10
-bullet_size = 0.1
 fire_rate = 0.6
 bullet_speed = 25.0
 speed_curve = ExtResource("2_b5hpr")
 time_taken = 1.5
+magazine = 7
+reload = 2.5
 metadata/_custom_type_script = "uid://do6w8kxg5xsky"

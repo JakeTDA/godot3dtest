@@ -114,13 +114,26 @@ height = 1.8000001
 [node name="ProtoController" type="CharacterBody3D" unique_id=635402]
 collision_layer = 2
 script = ExtResource("1_6t5aa")
+health = null
+can_move = null
+has_gravity = null
+can_jump = null
 can_sprint = true
 can_freefly = true
+look_speed = null
+base_speed = null
+jump_velocity = null
+sprint_speed = null
+freefly_speed = null
+friction = null
 input_left = "move_left"
 input_right = "move_right"
 input_forward = "move_up"
 input_back = "move_down"
 input_jump = "jump"
+input_sprint = null
+input_freefly = null
+input_shoot = null
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1159770872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
