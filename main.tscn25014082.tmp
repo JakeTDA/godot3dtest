@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://b7y74ybyp5fnx" path="res://environment/torch_mounted.tscn" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://ddboy36s3scj0" path="res://particles/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://dcxxokb45svag" path="res://Scripts/health_bar.gd" id="17_074og"]
-[ext_resource type="PackedScene" uid="uid://yapmti8ftsim" path="res://Scenes/time_stop.tscn" id="17_82xsv"]
 [ext_resource type="PackedScene" uid="uid://kfbjfvrrfrt5" path="res://Scenes/shotgun_enemy.tscn" id="17_cegan"]
 [ext_resource type="PackedScene" uid="uid://cjueqpto80vlf" path="res://Scenes/enemy.tscn" id="17_yaehf"]
 
@@ -161,7 +160,6 @@ mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="Arena" unique_id=1872616507]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 5, -0.69999963, 15.626, -29)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D7" unique_id=534518536]
 shape = SubResource("BoxShape3D_yaehf")
@@ -173,7 +171,6 @@ mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="Arena" unique_id=308605043]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 5, -0.69999963, 15.626, 28)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D8" unique_id=831675465]
 shape = SubResource("BoxShape3D_yaehf")
@@ -185,7 +182,6 @@ mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="Arena" unique_id=885737331]
 transform = Transform3D(-6.556708e-07, 0, 5, 0, 15, 0, -15, 0, -2.1855695e-07, -31.699997, 15.626, -0.4999986)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D9" unique_id=758728457]
 shape = SubResource("BoxShape3D_yaehf")
@@ -197,7 +193,6 @@ mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="Arena" unique_id=610548164]
 transform = Transform3D(-6.556708e-07, 0, 5, 0, 15, 0, -15, 0, -2.1855695e-07, 27.800007, 15.626, -0.5000012)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D10" unique_id=2048465184]
 shape = SubResource("BoxShape3D_yaehf")
@@ -499,8 +494,5 @@ shoot_ai = false
 [node name="Enemy6" parent="NPCs" unique_id=1596532645 instance=ExtResource("17_yaehf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.7, 2.9)
 shoot_ai = false
-
-[node name="StaticBody3D" parent="." unique_id=609198989 instance=ExtResource("17_82xsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 2.5, -1.7)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_play_button_pressed"]

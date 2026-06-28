@@ -1,3 +1,9 @@
+# wall running
+# time stop
+# parkour
+# good sliding mechanics
+# time stop but not just one basic time stop move, there will be variations and many creative ways u can use it
+
 extends Node3D
 
 @onready var main_menu = $CanvasLayer/MainMenu
@@ -5,11 +11,8 @@ extends Node3D
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 @onready var enemy = load("res://Scenes/enemy.tscn")
 @onready var shotgunenemy = load("res://Scenes/shotgun_enemy.tscn")
-@onready var player_list = []
 
 const Player = preload("res://Scenes/player.tscn")
-const PORT = 9999
-var enet_peer = ENetMultiplayerPeer.new()
 @export var enemy_ai = true
 
 # add this temporarily anywhere
@@ -41,7 +44,6 @@ func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
-	player_list += [player]
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
 		

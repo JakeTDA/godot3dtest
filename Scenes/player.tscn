@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c7kejrshyown5" path="res://Scripts/weapon.gd" id="3_vgqql"]
 [ext_resource type="Resource" uid="uid://djduyq41xwrmg" path="res://Resources/GunStats/pistol.tres" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://bekuaxwbhp0vq" path="res://Scripts/enemyhitbox.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://buolhii3pcyt4" path="res://Scenes/ammo_container.gd" id="6_x3wgy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -176,5 +177,8 @@ script = ExtResource("5_fkybt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHurtbox" unique_id=1824088905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
 shape = SubResource("CapsuleShape3D_vgqql")
+
+[node name="AmmoContainer" type="Node3D" parent="." unique_id=175193700]
+script = ExtResource("6_x3wgy")
 
 [connection signal="enemy_hit" from="PlayerHurtbox" to="." method="_on_player_hurtbox_enemy_hit"]

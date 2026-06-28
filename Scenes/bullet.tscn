@@ -16,14 +16,6 @@ emission_energy_multiplier = 3.29
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oduel"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oduel"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-
 [node name="Bullet" type="CharacterBody3D" unique_id=1513622262]
 script = ExtResource("1_oduel")
 speed = 50.0
@@ -51,6 +43,3 @@ collide_with_areas = true
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_oduel")
 disabled = true
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1545173510]
-replication_config = SubResource("SceneReplicationConfig_oduel")

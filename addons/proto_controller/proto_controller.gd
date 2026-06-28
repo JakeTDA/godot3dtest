@@ -57,9 +57,9 @@ signal health_changed(health_value)
 
 @onready var ani = $AnimationPlayer
 @onready var muzzleflash = $Head/Camera3D/Weapon/Muzzle
-@onready var shotgun = preload("res://Resources/GunStats/shotgun.tres")
-@onready var pistol = preload("res://Resources/GunStats/pistol.tres")
-@onready var smg = preload("res://Resources/GunStats/smg.tres")
+@onready var weapons = ["res://Resources/GunStats/pistol.tres",
+"res://Resources/GunStats/shotgun.tres",
+"res://Resources/GunStats/smg.tres"]
 
 
 var bull : int = 0

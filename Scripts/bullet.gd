@@ -1,6 +1,6 @@
 class_name Bullet
 extends CharacterBody3D
-
+signal bullet_hit(node : Node)
 @export var damage : float = 100.0
 @export var accel_curve : Curve
 @export var speed : float = 40.0
@@ -14,6 +14,11 @@ var time = 0.0
 
 func _ready() -> void:
 	call_deferred("apply_size")
+	bullet_hitbox.collision_hit.connect(_on_bullet_hit)
+
+func _on_bullet_hit():
+	bullet_hit.emit(self)
+	
 
 func apply_size():
 	mesh.scale = Vector3(size,size,size)

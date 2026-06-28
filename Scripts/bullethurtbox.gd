@@ -1,5 +1,5 @@
 class_name Hitbox extends Area3D
-signal enemy_hit(damage_amount : int)
+signal collision_hit(bullet: Node)
 
 var bullet : Bullet
 @onready var raycast = $Ray
@@ -12,17 +12,15 @@ func _ready() -> void:
 		bullet = owner
 	#area_entered.connect(damage)
 func _physics_process(delta: float) -> void:
-	#if not multiplayer.is_server():
-		#return
-	
 	if raycast.is_colliding():
 		if hit == true:
 			return
 		hit = true
-		#if not multiplayer.is_server():
-			#return
 		var target = raycast.get_collider()
 		damage(target)
+		collision_hit.emit()
+		if target is Power:
+			return
 		mesh.hide()
 		raycast.enabled = false
 		raycast.set_process_internal(false)
@@ -34,4 +32,9 @@ func damage(area: Node3D):
 	if area is Hurtbox:
 		#if area.is_multiplayer_authority(): return
 		area.damage(damage_amount)
+		mesh.hide()
+		raycast.enabled = false
+		raycast.set_process_internal(false)
+		await get_tree().create_timer(2.0).timeout
+		bullet.destroy_bullet()
 		

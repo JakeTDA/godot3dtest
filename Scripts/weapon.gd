@@ -5,6 +5,7 @@ signal ammo_out()
 
 @export var gun_stats : GunStats
 @onready var bullet = load("res://Scenes/bullet.tscn")
+@onready var player = $"../../.."
 @onready var pos : Node3D
 @onready var mag = gun_stats.magazine
 @onready var weapons = ["res://Resources/GunStats/pistol.tres",
@@ -24,7 +25,7 @@ func shoot():
 	if mag > 0:
 		for i in gun_stats.bullet_count:
 			var instance = bullet.instantiate()
-			get_tree().root.add_child(instance)
+			get_tree().current_scene.add_child(instance)
 			instance.global_position = pos.global_position
 			instance.global_transform.basis = pos.global_transform.basis
 			instance.damage = gun_stats.damage
