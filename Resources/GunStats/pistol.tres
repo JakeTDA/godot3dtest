@@ -9,6 +9,7 @@ damage = 20.0
 spread = 0.0
 fire_rate = 0.1
 speed_curve = ExtResource("2_d1l0d")
+time_taken = 0.3
 magazine = 15
 reload = 1.5
 metadata/_custom_type_script = "uid://do6w8kxg5xsky"

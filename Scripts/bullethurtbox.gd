@@ -16,25 +16,21 @@ func _physics_process(delta: float) -> void:
 		if hit == true:
 			return
 		hit = true
-		var target = raycast.get_collider()
-		damage(target)
 		collision_hit.emit()
+		var target = raycast.get_collider()
 		if target is Power:
 			return
 		mesh.hide()
 		raycast.enabled = false
 		raycast.set_process_internal(false)
-		await get_tree().create_timer(2.0).timeout
+		damage(target)
 		bullet.destroy_bullet()
+	else:
+		hit = false
 			
 func damage(area: Node3D):
 	var damage_amount = bullet.damage
 	if area is Hurtbox:
 		#if area.is_multiplayer_authority(): return
 		area.damage(damage_amount)
-		mesh.hide()
-		raycast.enabled = false
-		raycast.set_process_internal(false)
-		await get_tree().create_timer(2.0).timeout
-		bullet.destroy_bullet()
 		

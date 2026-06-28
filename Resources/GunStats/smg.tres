@@ -5,10 +5,10 @@
 
 [resource]
 script = ExtResource("1_s2w2h")
-damage = 12.0
 spread = 4.0
 fire_rate = 0.02
 speed_curve = ExtResource("2_8vhtx")
+time_taken = 0.3
 full_auto = true
-magazine = 30
+magazine = 25
 metadata/_custom_type_script = "uid://do6w8kxg5xsky"

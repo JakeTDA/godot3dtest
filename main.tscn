@@ -501,6 +501,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.7, 2.9)
 shoot_ai = false
 
 [node name="StaticBody3D" parent="." unique_id=609198989 instance=ExtResource("17_82xsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 2.5, -1.7)
+transform = Transform3D(4.4703484e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 4.4703484e-08, -2.5, 1.5999999, 0.09999998)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_play_button_pressed"]

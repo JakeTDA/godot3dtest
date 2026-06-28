@@ -44,8 +44,7 @@ func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
-	if player.is_multiplayer_authority():
-		player.health_changed.connect(update_health_bar)
+	player.health_changed.connect(update_health_bar)
 		
 func update_health_bar(health_value):
 	health_bar.value = health_value
@@ -69,7 +68,7 @@ func respawn_enemy(enemy_position):
 		new_enemy.shoot_ai = false
 	else:
 		new_enemy.shoot_ai = true
-	if !new_enemy.is_inside_tree():
+	if new_enemy.is_inside_tree() == false:
 		add_child(new_enemy)
 
 	

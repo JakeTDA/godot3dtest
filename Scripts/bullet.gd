@@ -10,6 +10,7 @@ signal bullet_hit(node : Node)
 @onready var bullet_hitbox: Hitbox = $BulletHitbox
 @onready var hitbox_collision = $BulletHitbox/CollisionShape3D
 @onready var raycast = $BulletHitbox/Ray
+var time_stopped = false
 var time = 0.0
 
 func _ready() -> void:
@@ -28,7 +29,7 @@ func _physics_process(delta):
 	time += delta
 	var time_calc = clamp(time / time_taken, 0.0, 1.0)
 	acceleration = accel_curve.sample(time_calc) * speed
-	if acceleration <= 5:
+	if acceleration <= 1:
 		raycast.call_deferred("set","enabled",false)
 	else:
 		raycast.call_deferred("set","enabled",true)
