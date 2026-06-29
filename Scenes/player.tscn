@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0ipyxcr6w3e8"]
 
 [ext_resource type="Script" uid="uid://bgfvb35pegui7" path="res://addons/proto_controller/proto_controller.gd" id="1_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://yapmti8ftsim" path="res://Scenes/time_stop.tscn" id="2_3smsa"]
 [ext_resource type="CapsuleMesh" uid="uid://bd608v2b24wf" path="res://models/playermesh.tres" id="2_vgqql"]
 [ext_resource type="Script" uid="uid://c7kejrshyown5" path="res://Scripts/weapon.gd" id="3_vgqql"]
 [ext_resource type="Resource" uid="uid://djduyq41xwrmg" path="res://Resources/GunStats/pistol.tres" id="4_fkybt"]
@@ -123,6 +124,9 @@ input_forward = "move_up"
 input_back = "move_down"
 input_jump = "jump"
 
+[node name="TimeBarrier" parent="." unique_id=609198989 instance=ExtResource("2_3smsa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1159770872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 material_override = SubResource("StandardMaterial3D_iof21")
@@ -172,6 +176,8 @@ libraries/pistol = SubResource("AnimationLibrary_6t5aa")
 replication_config = SubResource("SceneReplicationConfig_6t5aa")
 
 [node name="PlayerHurtbox" type="Area3D" parent="." unique_id=1282243267]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("5_fkybt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHurtbox" unique_id=1824088905]

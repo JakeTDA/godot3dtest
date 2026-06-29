@@ -20,6 +20,7 @@ func _ready() -> void:
 	hurtbox = $Hurtbox
 	mesh_instance_3d = $MeshInstance3D
 	collider = $Collider
+	weapon.ammo_out.connect(reload)
 	add_to_group("enemies")
 	if multiplayer.is_server():
 		enemy_dead.connect(get_tree().current_scene._on_enemy_died)
@@ -45,6 +46,8 @@ func damaged(damage_amount):
 		dead = true
 		death()
 	
+func reload():
+	weapon.reload()
 func death():
 	hurtbox.queue_free()
 	mesh_instance_3d.queue_free()

@@ -37,6 +37,8 @@ func shoot():
 			instance.rotation.y += deg_to_rad(randf_range(-gun_stats.spread, gun_stats.spread))
 	if mag <= 1:
 		ammo_out.emit()
+	if mag <= 0:
+		reload()
 	mag -= 1
 	print(mag)
 func get_cooldown():
@@ -49,9 +51,7 @@ func get_reload():
 	return gun_stats.reload
 
 func reload():
-	print("reloading")
 	mag = gun_stats.magazine
-	print("reloaded")
 	stop_shoot.emit()
 	return gun_stats.reload
 

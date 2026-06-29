@@ -60,7 +60,7 @@ signal health_changed(health_value)
 @onready var weapons = ["res://Resources/GunStats/pistol.tres",
 "res://Resources/GunStats/shotgun.tres",
 "res://Resources/GunStats/smg.tres"]
-
+@onready var time_barrier = $TimeBarrier
 
 var bull : int = 0
 
@@ -179,6 +179,10 @@ func _physics_process(delta: float) -> void:
 		shoot()		
 	if Input.is_action_pressed(input_shoot) and weapon and full_auto:
 		shoot()
+	if Input.is_action_pressed("right_click"):
+		time_barrier.activate()
+	else:
+		time_barrier.disable()
 		
 	#if Input.is_action_just_pressed(input_shoot) and weapon:
 		#print("shoot")

@@ -14,10 +14,9 @@ emission_energy_multiplier = 3.29
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycag2"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oduel"]
-
 [node name="Bullet" type="CharacterBody3D" unique_id=1513622262]
 collision_layer = 32768
+collision_mask = 7
 script = ExtResource("1_oduel")
 speed = 50.0
 
@@ -29,6 +28,7 @@ mesh = SubResource("CapsuleMesh_eyyro")
 [node name="BulletHitbox" type="Area3D" parent="." unique_id=2097821688]
 transform = Transform3D(-4.371138e-09, 4.3711395e-09, -0.1, 0.1, -4.371139e-09, -4.3711386e-09, -4.3711395e-09, -0.1, -4.371139e-09, 0, 0, 0)
 collision_layer = 32768
+collision_mask = 7
 script = ExtResource("2_ycag2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletHitbox" unique_id=206719892]
@@ -38,12 +38,6 @@ disabled = true
 
 [node name="Ray" type="RayCast3D" parent="BulletHitbox" unique_id=2100523169]
 transform = Transform3D(-4.371138e-07, 0, 10, 4.371139e-07, -10.965462, 0, -10, -4.7931564e-07, -4.3711378e-07, 0, 0, 0)
-enabled = false
-collision_mask = 3
+collision_mask = 7
 hit_from_inside = true
 collide_with_areas = true
-
-[node name="Collider" type="CollisionShape3D" parent="." unique_id=643464085]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_oduel")
-disabled = true

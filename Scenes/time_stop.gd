@@ -2,8 +2,10 @@ class_name Power
 extends StaticBody3D
 signal speed_change(speed_curve)
 var bullet : Bullet
-var speed_curve : Curve
-var time_stop = false
+var fast_to_slow = load("res://Resources/SpeedCurves/fast_to_slow.tres")
+var slow_to_fast = load("res://Resources/SpeedCurves/slow_to_fast.tres")
+@onready var collider = $CollisionShape3D
+@onready var mesh = $MeshInstance3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().current_scene.child_entered_tree.connect(_on_child_entered)
@@ -11,24 +13,31 @@ func _ready() -> void:
 
 func _on_child_entered(node: Node):
 	if node is Bullet:
-		node.bullet_hit.connect(_on_bullet_hit)
+		node.bullet_hit.connect(time_stop)
+		node.bullet_unhit.connect(time_release)
 		bullet = node
 
-func _on_bullet_hit(bullet : Bullet):
-	if bullet.time_stopped == false:
+func time_stop(bullet : Bullet):
+	if bullet.bullet_hitbox.time_stopped == false:
 		print("BULLET")
-		speed_curve = load("res://Resources/SpeedCurves/fast_to_slow.tres")
-		bullet.accel_curve = speed_curve
-		bullet.time_stopped = true
-		await get_tree().create_timer(1.0).timeout
-		speed_curve = load("res://Resources/SpeedCurves/slow_to_fast.tres")
-		if is_instance_valid(bullet):
-			bullet.time = 0.0
-			bullet.accel_curve = speed_curve
-		await get_tree().create_timer(1.0).timeout
-		if is_instance_valid(bullet):
-			bullet.time_stopped = false
-			
+		bullet.time = 0.0
+		bullet.accel_curve = fast_to_slow
+		bullet.bullet_hitbox.time_stopped = true
+	
+func time_release(bullet: Bullet):
+	if is_instance_valid(bullet) and bullet.bullet_hitbox.time_stopped == true:
+		print("LEE")
+		bullet.time = 0.0
+		bullet.accel_curve = slow_to_fast		
+		bullet.bullet_hitbox.time_stopped = false
+		
+func activate():
+	collider.disabled = false
+	mesh.visible = true
+
+func disable():
+	collider.disabled = true
+	mesh.visible = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

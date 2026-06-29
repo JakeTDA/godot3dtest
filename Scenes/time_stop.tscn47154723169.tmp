@@ -2,19 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bpruk64mg8cvv" path="res://Scenes/time_stop.gd" id="1_3oy1k"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_3oy1k"]
-radius = 4.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_da73c"]
+size = Vector3(2.8799999, 2.6000001, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3oy1k"]
 transparency = 1
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.7058824, 1, 1, 0.3647059)
 
-[sub_resource type="SphereMesh" id="SphereMesh_3oy1k"]
+[sub_resource type="BoxMesh" id="BoxMesh_3oy1k"]
 material = SubResource("StandardMaterial3D_3oy1k")
-radius = 4.0
-height = 8.0
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=609198989]
 collision_layer = 2
@@ -22,7 +19,8 @@ collision_mask = 2
 script = ExtResource("1_3oy1k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1935886501]
-shape = SubResource("SphereShape3D_3oy1k")
+shape = SubResource("BoxShape3D_da73c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=28243691]
-mesh = SubResource("SphereMesh_3oy1k")
+transform = Transform3D(2.88, 0, 0, 0, 2.6, 0, 0, 0, 0.348, 0, 0, 0)
+mesh = SubResource("BoxMesh_3oy1k")
