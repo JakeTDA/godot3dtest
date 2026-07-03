@@ -15,14 +15,16 @@ radius = 0.4
 height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afpow"]
+radius = 0.4
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1092334543]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_1f0kj")
 shoot_ai = true
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=203631637]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 2
 script = ExtResource("2_afpow")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=396365126]
@@ -34,9 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24000001, 0)
 mesh = SubResource("CapsuleMesh_1f0kj")
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1768921718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("CapsuleShape3D_afpow")
-disabled = true
 
 [node name="Boom" parent="." unique_id=999300250 instance=ExtResource("3_afpow")]
 

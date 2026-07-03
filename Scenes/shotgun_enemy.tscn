@@ -15,23 +15,17 @@ radius = 0.4
 height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afpow"]
+radius = 0.4
+height = 1.8000001
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_afpow"]
-properties/0/path = NodePath(".:health")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:position")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
-[node name="Enemy" type="CharacterBody3D" unique_id=1092334543]
+[node name="ShotgunEnemy" type="CharacterBody3D" unique_id=1092334543]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_pw4r6")
 shoot_ai = true
 
 [node name="Hurtbox" type="Area3D" parent="." unique_id=203631637]
+collision_layer = 2
 script = ExtResource("2_xrlp5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=396365126]
@@ -43,13 +37,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24000001, 0)
 mesh = SubResource("CapsuleMesh_1f0kj")
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1768921718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("CapsuleShape3D_afpow")
-disabled = true
 
 [node name="Boom" parent="." unique_id=999300250 instance=ExtResource("3_vuolq")]
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=37618470]
-replication_config = SubResource("SceneReplicationConfig_afpow")
 
 [node name="Weapon" parent="." unique_id=1717006006 instance=ExtResource("4_lucqt")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.4, -0.7)

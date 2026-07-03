@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://b7y74ybyp5fnx" path="res://environment/torch_mounted.tscn" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://ddboy36s3scj0" path="res://particles/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://dcxxokb45svag" path="res://Scripts/health_bar.gd" id="17_074og"]
-[ext_resource type="PackedScene" uid="uid://yapmti8ftsim" path="res://Scenes/time_stop.tscn" id="17_82xsv"]
 [ext_resource type="PackedScene" uid="uid://kfbjfvrrfrt5" path="res://Scenes/shotgun_enemy.tscn" id="17_cegan"]
 [ext_resource type="PackedScene" uid="uid://cjueqpto80vlf" path="res://Scenes/enemy.tscn" id="17_yaehf"]
 
@@ -499,8 +498,5 @@ shoot_ai = false
 [node name="Enemy6" parent="NPCs" unique_id=1596532645 instance=ExtResource("17_yaehf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.7, 2.9)
 shoot_ai = false
-
-[node name="StaticBody3D3" parent="." unique_id=5242309 instance=ExtResource("17_82xsv")]
-transform = Transform3D(4.470348e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 4.470348e-08, 0.29999965, 1.3, 0.20000029)
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_play_button_pressed"]

@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody3D
 
 @export var health = 100
@@ -5,6 +6,7 @@ extends CharacterBody3D
 @export var speed = 5
 @export var shoot_ai = false
 @onready var ani = $Boom/AnimationPlayer
+@onready var weapon_ani = $Weapon/Muzzle
 @onready var weapon = $Weapon
 var hurtbox: Hurtbox
 var mesh_instance_3d: MeshInstance3D
@@ -13,7 +15,7 @@ var fire_rate = 1
 var shoot_cooldown = fire_rate
 var dead = false
 @onready var player = get_tree().get_first_node_in_group("players")
-
+@onready var current_scene = self.scene_file_path
 signal enemy_dead(spawn_point: Vector3)
 	
 func _ready() -> void:
@@ -33,6 +35,8 @@ func _physics_process(delta: float) -> void:
 	if shoot_cooldown <= 0 and dead == false and shoot_ai == true:
 		look_at(player.global_position)
 		weapon.shoot()
+		weapon_ani.restart()
+		weapon_ani.emitting = true
 		shoot_cooldown = fire_rate
 	pass	
 
@@ -41,7 +45,7 @@ func _on_enemy_hit(damage_amount: int) -> void:
 		
 func damaged(damage_amount):
 	health -= damage_amount
-	print(health)
+	#print(health)
 	if health <= 0 and dead == false:
 		dead = true
 		death()
@@ -55,5 +59,5 @@ func death():
 	ani.play("play")
 	await get_tree().create_timer(1.0).timeout
 	dead = false
-	enemy_dead.emit(global_position)
+	enemy_dead.emit(current_scene, global_position)
 	queue_free()

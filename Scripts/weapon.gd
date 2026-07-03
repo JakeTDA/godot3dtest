@@ -28,7 +28,7 @@ func shoot():
 			get_tree().current_scene.add_child(instance)
 			instance.global_position = pos.global_position
 			instance.global_transform.basis = pos.global_transform.basis
-			instance.damage = gun_stats.damage
+			instance.damage_num = gun_stats.damage
 			instance.size = gun_stats.bullet_size
 			instance.speed = gun_stats.bullet_speed
 			instance.accel_curve = gun_stats.speed_curve
@@ -40,7 +40,7 @@ func shoot():
 	if mag <= 0:
 		reload()
 	mag -= 1
-	print(mag)
+	#print(mag)
 func get_cooldown():
 	return gun_stats.fire_rate
 

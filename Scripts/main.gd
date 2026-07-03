@@ -55,13 +55,13 @@ func _on_multiplayer_spawner_spawned(node) -> void:
 		node.health_changed.connect(update_health_bar)
 
 
-func _on_enemy_died(enemy_position : Vector3):
-	if not multiplayer.is_server():
-		return
+func _on_enemy_died(scene, enemy_position : Vector3):
+	
 	await get_tree().create_timer(1.0).timeout	
-	respawn_enemy(enemy_position)
+	respawn_enemy(scene, enemy_position)
 
-func respawn_enemy(enemy_position):
+func respawn_enemy(scene, enemy_position):	
+	enemy = load(scene)
 	var new_enemy = enemy.instantiate()
 	new_enemy.global_position = enemy_position
 	if enemy_ai == false:

@@ -60,7 +60,7 @@ signal health_changed(health_value)
 @onready var weapons = ["res://Resources/GunStats/pistol.tres",
 "res://Resources/GunStats/shotgun.tres",
 "res://Resources/GunStats/smg.tres"]
-@onready var time_barrier = $TimeBarrier
+@onready var time_stop_area = $TimeStopArea
 
 var bull : int = 0
 
@@ -180,9 +180,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed(input_shoot) and weapon and full_auto:
 		shoot()
 	if Input.is_action_pressed("right_click"):
-		time_barrier.activate()
+		time_stop_area.activate()
 	else:
-		time_barrier.disable()
+		time_stop_area.disable()
 		
 	#if Input.is_action_just_pressed(input_shoot) and weapon:
 		#print("shoot")
@@ -299,7 +299,7 @@ func player_hit(damage_amount : int):
 	if not is_multiplayer_authority():
 		return
 	health -= damage_amount
-	print(health)
+	#print(health)
 	if health <= 0:
 		health = 100.0
 		position = Vector3.ZERO
