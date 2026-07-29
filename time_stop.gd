@@ -52,7 +52,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is Bullet:
 		time_stop(body)
 	if body is Enemy:
-		body.shoot_ai = false
+		#body.shoot_ai = false
 		print("off")
 		
 	pass # Replace with function body.
@@ -63,5 +63,5 @@ func _on_body_exited(body: Node3D) -> void:
 		time_release(body)
 	if body is Enemy:
 		print("e")
-		body.shoot_ai = true
+		#body.shoot_ai = true
 	pass # Replace with function body.

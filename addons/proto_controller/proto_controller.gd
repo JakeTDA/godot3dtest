@@ -55,6 +55,9 @@ signal health_changed(health_value)
 
 @export var input_shoot : String = "shoot"
 
+@onready var left_ray = $RayCast3D2
+@onready var right_ray = $RayCast3D3
+@onready var near_floor_ray = $RayCast3D
 @onready var ani = $AnimationPlayer
 @onready var muzzleflash = $Head/Camera3D/Weapon/Muzzle
 @onready var weapons = ["res://Resources/GunStats/pistol.tres",
@@ -135,6 +138,7 @@ var on_cooldown = false
 var reloading = false
 var ammo_out = false
 @onready var full_auto = weapon.get_mode()
+var wall_run = true
 
 func cur_reload():
 	reloading = true
@@ -183,7 +187,18 @@ func _physics_process(delta: float) -> void:
 		time_stop_area.activate()
 	else:
 		time_stop_area.disable()
-		
+	if not near_floor_ray.is_colliding():
+		if Input.is_action_pressed("jump") and ((left_ray.is_colliding() and Input.is_action_pressed("move_left"))\
+		or (right_ray.is_colliding() and Input.is_action_pressed("move_right"))):		
+			has_gravity = false
+			velocity.y = 0
+		else:
+			has_gravity = true
+		if Input.is_action_just_released("jump"):
+			velocity.y = jump_velocity
+			velocity.x = jump_velocity
+	else:
+		has_gravity = true
 	#if Input.is_action_just_pressed(input_shoot) and weapon:
 		#print("shoot")
 		#weapon.shoot()
@@ -207,7 +222,7 @@ func _physics_process(delta: float) -> void:
 
 	# Apply jumping
 	if can_jump:
-		if Input.is_action_just_pressed(input_jump) and is_on_floor():
+		if Input.is_action_just_pressed(input_jump) and is_on_floor() :
 			velocity.y = jump_velocity
 
 	# Modify speed based on sprinting

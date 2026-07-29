@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_s2w2h")
+damage = 15.0
 spread = 4.0
 fire_rate = 0.02
 bullet_speed = 30.0

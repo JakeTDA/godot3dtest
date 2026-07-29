@@ -107,7 +107,6 @@ collision_mask = 7
 script = ExtResource("1_6t5aa")
 can_sprint = true
 can_freefly = true
-friction = 0.1
 input_left = "move_left"
 input_right = "move_right"
 input_forward = "move_up"
@@ -132,7 +131,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=119153514]
 
 [node name="Weapon" type="Node3D" parent="Head/Camera3D" unique_id=1717006006]
-transform = Transform3D(-0.025985297, 0.007661711, 0.9996324, 0.026176302, 0.99963266, -0.00698126, -0.9993192, 0.025985286, -0.02617631, 0.3, -0.4000001, -0.70000005)
+transform = Transform3D(-0.025985297, 0.00766171, 0.9996324, 0.026176302, 0.99963266, -0.006981259, -0.9993192, 0.025985286, -0.02617631, 0.3, -0.4000001, -0.70000005)
 script = ExtResource("3_vgqql")
 gun_stats = ExtResource("4_fkybt")
 
@@ -175,14 +174,5 @@ shape = SubResource("CapsuleShape3D_vgqql")
 
 [node name="AmmoContainer" type="Node3D" parent="." unique_id=175193700]
 script = ExtResource("6_x3wgy")
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1537201844]
-transform = Transform3D(1, 0, 0, 0, 0.7257601, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="RayCast3D2" type="RayCast3D" parent="." unique_id=1132280028]
-transform = Transform3D(1.3113416e-07, 1, 0, 4.371138e-08, -7.642741e-15, -1, -1, 1.3113416e-07, -4.3711385e-08, 0, 0.8, 3.4969112e-08)
-
-[node name="RayCast3D3" type="RayCast3D" parent="." unique_id=1686795577]
-transform = Transform3D(-4.371139e-08, -1, -8.742277e-08, -1, 4.371139e-08, 3.8213705e-15, 0, 8.742278e-08, -0.99999994, 3.496911e-08, 0.8, 0)
 
 [connection signal="enemy_hit" from="PlayerHurtbox" to="." method="_on_player_hurtbox_enemy_hit"]

@@ -49,13 +49,31 @@ transparency = 1
 albedo_color = Color(1, 0.40392157, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yaehf"]
-size = Vector3(3.9399998, 2.06, 0.51)
+size = Vector3(3.9, 2.06, 0.51)
 
 [sub_resource type="BoxMesh" id="BoxMesh_074og"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yaehf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_074og"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_getpj"]
+size = Vector3(60.5, 30, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cqfq"]
+size = Vector3(29.9, 30, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cegan"]
+size = Vector3(61, 30, 0.90000004)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82xsv"]
+size = Vector3(57.7, 30, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_074og"]
+size = Vector3(30.300001, 30.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryguw"]
+size = Vector3(59, 30, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
@@ -68,7 +86,7 @@ environment = SubResource("Environment_0xm2m")
 camera_attributes = SubResource("CameraAttributesPractical_ycdy4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1485551814]
-transform = Transform3D(1.0000002, 0, 0, 0, -0.86602545, 0.5, 0, -0.5, -0.86602545, 6.3440375, 11.056202, -7.238195)
+transform = Transform3D(1.0000002, 0, 0, 0, 0.9396926, 0.34202018, 0, -0.34202018, 0.9396926, 6.3440375, 45.456203, -7.238197)
 light_energy = 0.7
 shadow_enabled = true
 
@@ -121,11 +139,10 @@ mesh = SubResource("BoxMesh_074og")
 [node name="StaticBody3D5" type="StaticBody3D" parent="Arena" unique_id=21050764]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D5" unique_id=489684321]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_yaehf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D5" unique_id=1932277194]
-transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_074og")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Arena" unique_id=727326438]
@@ -159,50 +176,80 @@ transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="Arena" unique_id=1872616507]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 5, -0.69999963, 15.626, -29)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7999997, 14.926001, -29.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D7" unique_id=534518536]
-shape = SubResource("BoxShape3D_yaehf")
+shape = SubResource("BoxShape3D_getpj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D7" unique_id=818534344]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(59, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="Arena" unique_id=308605043]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 5, -0.69999963, 15.626, 28)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 14.926, 28.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D8" unique_id=831675465]
-shape = SubResource("BoxShape3D_yaehf")
+shape = SubResource("BoxShape3D_2cqfq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D8" unique_id=1435536723]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="Arena" unique_id=885737331]
-transform = Transform3D(-6.556708e-07, 0, 5, 0, 15, 0, -15, 0, -2.1855695e-07, -31.699997, 15.626, -0.4999986)
-visible = false
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.699997, 14.926, -0.4999986)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D9" unique_id=758728457]
-shape = SubResource("BoxShape3D_yaehf")
+shape = SubResource("BoxShape3D_cegan")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D9" unique_id=1256013321]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(59, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_074og")
 
 [node name="StaticBody3D10" type="StaticBody3D" parent="Arena" unique_id=610548164]
-transform = Transform3D(-6.556708e-07, 0, 5, 0, 15, 0, -15, 0, -2.1855695e-07, 27.800007, 15.626, -0.5000012)
-visible = false
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.800007, 14.926, -0.5000012)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D10" unique_id=2048465184]
-shape = SubResource("BoxShape3D_yaehf")
+shape = SubResource("BoxShape3D_82xsv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D10" unique_id=745921741]
-transform = Transform3D(3.9600003, 0, 0, 0, 2.0900002, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(59, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_074og")
+
+[node name="StaticBody3D11" type="StaticBody3D" parent="Arena" unique_id=636836219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.300001, 14.926, 28.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D11" unique_id=1481395180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099998474, 0, 0)
+shape = SubResource("BoxShape3D_074og")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D11" unique_id=1534263433]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_074og")
+
+[node name="StaticBody3D12" type="StaticBody3D" parent="Arena" unique_id=884921879]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8999996, 14.926001, 58.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D12" unique_id=208539404]
+shape = SubResource("BoxShape3D_ryguw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D12" unique_id=792249459]
+transform = Transform3D(59, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_074og")
+
+[node name="StaticBody3D13" type="StaticBody3D" parent="Arena" unique_id=1002801899]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.8, 14.926001, 58.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/StaticBody3D13" unique_id=2093809801]
+shape = SubResource("BoxShape3D_ryguw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arena/StaticBody3D13" unique_id=1021118764]
+transform = Transform3D(59, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_074og")
 
@@ -436,7 +483,6 @@ layout_mode = 2
 text = "Play"
 
 [node name="HUD" type="Control" parent="CanvasLayer" unique_id=1752827298]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
