@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://4elfg203lfpo"]
+
+[ext_resource type="Script" uid="uid://bi2ofbr5v4sbp" path="res://game_manager.gd" id="1_1ypwr"]
+[ext_resource type="Texture2D" uid="uid://ddboy36s3scj0" path="res://particles/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="2_hlr1k"]
+[ext_resource type="Script" uid="uid://dcxxokb45svag" path="res://Scripts/health_bar.gd" id="3_asd01"]
+
+[node name="GameManager" type="Node3D" unique_id=1952009097]
+script = ExtResource("1_1ypwr")
+enemy_ai = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1686767055]
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer" unique_id=1673004370]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = 270.0
+offset_right = -416.0
+offset_bottom = -278.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu" unique_id=660945767]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer" unique_id=22710323]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=513853724]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=181560956]
+layout_mode = 2
+text = "Play"
+
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=1638553305]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD" unique_id=1510086950]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.03, 0.03)
+pivot_offset = Vector2(576, 324)
+texture = ExtResource("2_hlr1k")
+stretch_mode = 5
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD" unique_id=422233513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 334.0
+offset_top = 97.0
+offset_right = -330.0
+offset_bottom = -509.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+value = 100.0
+show_percentage = false
+script = ExtResource("3_asd01")
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]

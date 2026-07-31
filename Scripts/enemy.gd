@@ -19,13 +19,18 @@ var dead = false
 signal enemy_dead(spawn_point: Vector3)
 	
 func _ready() -> void:
+	if GameManager.enemy_ai == true:
+		shoot_ai = true
+	else:
+		shoot_ai = false
+		
 	hurtbox = $Hurtbox
 	mesh_instance_3d = $MeshInstance3D
 	collider = $Collider
 	weapon.ammo_out.connect(reload)
 	add_to_group("enemies")
 	if multiplayer.is_server():
-		enemy_dead.connect(get_tree().current_scene._on_enemy_died)
+		enemy_dead.connect(GameManager._on_enemy_died)
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -56,8 +61,9 @@ func death():
 	hurtbox.queue_free()
 	mesh_instance_3d.queue_free()
 	collider.queue_free()
+	weapon.queue_free()
 	ani.play("play")
-	await get_tree().create_timer(1.0).timeout
-	dead = false
 	enemy_dead.emit(current_scene, global_position)
+	await get_tree().create_timer(5.0).timeout
+	dead = false
 	queue_free()

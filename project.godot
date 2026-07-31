@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="3d test nomulti"
-run/main_scene="uid://x58h8kr2aifu"
+run/main_scene="uid://bok2amhf3xtf8"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://4elfg203lfpo"
 
 [display]
 

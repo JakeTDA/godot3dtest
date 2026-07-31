@@ -132,7 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=119153514]
 
 [node name="Weapon" type="Node3D" parent="Head/Camera3D" unique_id=1717006006]
-transform = Transform3D(-0.025985297, 0.007661711, 0.9996324, 0.026176302, 0.99963266, -0.00698126, -0.9993192, 0.025985286, -0.02617631, 0.3, -0.4000001, -0.70000005)
+transform = Transform3D(-0.025985297, 0.0076617114, 0.9996324, 0.026176302, 0.99963266, -0.0069812606, -0.9993192, 0.025985286, -0.02617631, 0.3, -0.4000001, -0.70000005)
 script = ExtResource("3_vgqql")
 gun_stats = ExtResource("4_fkybt")
 

@@ -188,15 +188,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		time_stop_area.disable()
 	if not near_floor_ray.is_colliding():
-		if Input.is_action_pressed("jump") and ((left_ray.is_colliding() and Input.is_action_pressed("move_left"))\
-		or (right_ray.is_colliding() and Input.is_action_pressed("move_right"))):		
+		if Input.is_action_pressed("jump") and ((left_ray.is_colliding())\
+		or right_ray.is_colliding()):		
 			has_gravity = false
 			velocity.y = 0
 		else:
 			has_gravity = true
-		if Input.is_action_just_released("jump"):
-			velocity.y = jump_velocity
-			velocity.x = jump_velocity
 	else:
 		has_gravity = true
 	#if Input.is_action_just_pressed(input_shoot) and weapon:

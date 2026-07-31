@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://x58h8kr2aifu"]
 
-[ext_resource type="Script" uid="uid://m2cyhggiyxio" path="res://Scripts/main.gd" id="1_cegan"]
 [ext_resource type="PackedScene" uid="uid://dj767bchjr3vl" path="res://models/brackeys_3d_game_assets/dungeon_assets/props/fullchest.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://buqjnh70yms37" path="res://models/brackeys_3d_game_assets/dungeon_assets/props/barrel.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://8jcf16q5jsmw" path="res://environment/wall.tscn" id="4_1bvp3"]
@@ -12,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://6d331u76ubm7" path="res://environment/wall_window_closed.tscn" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://wfsov2g18cxt" path="res://environment/ceiling.tscn" id="10_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://b7y74ybyp5fnx" path="res://environment/torch_mounted.tscn" id="11_efxa6"]
-[ext_resource type="Texture2D" uid="uid://ddboy36s3scj0" path="res://particles/brackeys_vfx_bundle/particles/alpha/circle_05_a.png" id="16_yaehf"]
-[ext_resource type="Script" uid="uid://dcxxokb45svag" path="res://Scripts/health_bar.gd" id="17_074og"]
 [ext_resource type="PackedScene" uid="uid://kfbjfvrrfrt5" path="res://Scenes/shotgun_enemy.tscn" id="17_cegan"]
 [ext_resource type="PackedScene" uid="uid://cjueqpto80vlf" path="res://Scenes/enemy.tscn" id="17_yaehf"]
 
@@ -78,8 +75,6 @@ size = Vector3(59, 30, 1)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
 [node name="Main" type="Node3D" unique_id=1504991988]
-script = ExtResource("1_cegan")
-enemy_ai = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1731867156]
 environment = SubResource("Environment_0xm2m")
@@ -445,79 +440,8 @@ transform = Transform3D(0.9027096, 0.018571932, 0.42984933, 0.006820306, 0.99832
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90000004, 0.50000006, 95.8)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=389463059]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8000001, -0.8200005, -9.2)
-size = Vector3(18.7, 2.6000001, 23.6)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=725401838]
-
-[node name="MainMenu" type="PanelContainer" parent="CanvasLayer" unique_id=633111405]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 416.0
-offset_top = 270.0
-offset_right = -416.0
-offset_bottom = -278.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu" unique_id=1933853258]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer" unique_id=664657656]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=884898277]
-layout_mode = 2
-text = "Main Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer" unique_id=873888128]
-layout_mode = 2
-text = "Play"
-
-[node name="HUD" type="Control" parent="CanvasLayer" unique_id=1752827298]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD" unique_id=1176407218]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.03, 0.03)
-pivot_offset = Vector2(576, 324)
-texture = ExtResource("16_yaehf")
-stretch_mode = 5
-
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD" unique_id=1393451855]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 334.0
-offset_top = 97.0
-offset_right = -330.0
-offset_bottom = -509.0
-grow_horizontal = 2
-grow_vertical = 2
-step = 1.0
-value = 100.0
-show_percentage = false
-script = ExtResource("17_074og")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8000001, -1.0700005, 28.95)
+size = Vector3(69.6, 2.1000001, 117.5)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=1547485810]
 
@@ -544,5 +468,3 @@ shoot_ai = false
 [node name="Enemy6" parent="NPCs" unique_id=1596532645 instance=ExtResource("17_yaehf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.7, 2.9)
 shoot_ai = false
-
-[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_play_button_pressed"]
